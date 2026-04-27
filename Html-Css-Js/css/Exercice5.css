@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+}
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --toggle-bg: #ccc;
+}
+
+body.dark-mode {
+    --bg-color: #1e1e1e;
+    --text-color: #ffffff;
+    --toggle-bg: #333;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s; /* Transition douce */
+}
+
+button {
+    /* background-color: #4CAF50; */
+    background-color: var(--toggle-bg);
+    color: var(--text-color);
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.card-out {
+    display: flex;
+    justify-content: space-between;
+    /* background-color: #0000FF; */
+    width: 40%;
+    height: 35%;
+    margin: 50px auto;
+}
+button:hover {
+    background-color: #45a049;
+}

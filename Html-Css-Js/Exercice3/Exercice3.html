@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Html-Css-Js/css/Exercice3.css">
+    <title>Formulaire</title>
+</head>
+<body>
+    <div class="card-form">
+        <form>
+            <h1>Mon Formulaire</h1>
+            
+            <!-- Section Informations Personnelles -->
+            <section class="form-section">
+                <h2>Informations Personnelles</h2>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="name">Nom Complet</label>
+                        <input type="text" id="name" name="name" placeholder="Votre nom complet" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="age">Âge</label>
+                        <input type="number" id="age" name="age" placeholder="Votre âge" min="0" max="150" required>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Sexe -->
+            <div class="form-row">
+                <section class="form-section">
+                    <h2>Sexe</h2>
+                    <div class="form-radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="homme" name="sexe" value="homme" required>
+                            <label for="homme">Homme</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="femme" name="sexe" value="femme">
+                            <label for="femme">Femme</label>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section Loisirs -->
+                <section class="form-section">
+                    <h2>Loisirs</h2>
+                    <div class="form-checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="photographie" name="loisir" value="photographie">
+                            <label for="photographie">Photographie</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="bricolage" name="loisir" value="bricolage">
+                            <label for="bricolage">Bricolage</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="cuisine" name="loisir" value="cuisine">
+                            <label for="cuisine">Cuisine</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="sport" name="loisir" value="sport">
+                            <label for="sport">Sport</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="voyage" name="loisir" value="voyage">
+                            <label for="voyage">Voyage</label>
+                        </div>
+                        <p id="error-message" style="color:red; display:none;">Veuillez cocher au moins une case.</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Section Pays -->
+            <section class="form-section">
+                <h2>Pays</h2>
+                <div class="form-field">
+                    <select name="pays" id="pays" required>
+                        <option value="">-- Sélectionnez un pays --</option>
+                        <optgroup label="Afrique">
+                            <option value="senegal">Sénégal</option>
+                            <option value="mali">Mali</option>
+                            <option value="guinee">Guinée</option>
+                            <option value="gambie">Gambie</option>
+                            <option value="cap-vert">Cap-Vert</option>
+                        </optgroup>
+                        <optgroup label="Europe">
+                            <option value="portugal">Portugal</option>
+                            <option value="espagne">Espagne</option>
+                            <option value="allemagne">Allemagne</option>
+                            <option value="france">France</option>
+                            <option value="italie">Italie</option>
+                        </optgroup>
+                        <optgroup label="Asie">
+                            <option value="chine">Chine</option>
+                            <option value="coree-du-sud">Corée du Sud</option>
+                            <option value="japon">Japon</option>
+                            <option value="iran">Iran</option>
+                            <option value="taiwan">Taiwan</option>
+                        </optgroup>
+                        <optgroup label="Amérique">
+                            <option value="usa">USA</option>
+                            <option value="argentine">Argentine</option>
+                            <option value="bresil">Brésil</option>
+                            <option value="mexique">Mexique</option>
+                            <option value="perou">Pérou</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </section>
+
+            <!-- Section Commentaire -->
+            <section class="form-section">
+                <h2>Commentaire</h2>
+                <div class="form-field">
+                    <textarea id="commentaire" name="commentaire" placeholder="Votre commentaire ici" rows="6" required></textarea>
+                </div>
+            </section>
+
+            <p id="success-message" style="color:green; display:none;">Formulaire soumis avec succès!</p>
+            <div id="form-data" style="display:none; margin-top: 20px; padding: 15px; background-color: #f0f0f0; border-radius: 8px;">
+                <h3>Données du formulaire :</h3>
+                <pre id="data-output"></pre>
+            </div>
+
+            <!-- Boutons d'action -->
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+                <button type="reset" class="btn btn-secondary">Réinitialiser</button>
+            </div>
+        </form>
+    </div>
+    <div class="card-out">
+        <a href="/Html-Css-Js/Exercice2/Exercice2.html">
+            <button class="col"><< Exercice 2</button>
+        </a>
+        <a href="/index.html">
+            <button class="col"><< Page principale >></button>
+        </a>
+        <a href="/Html-Css-Js/Exercice4/Exercice4.html">
+            <button class="col">Exercice 4 >></button>
+        </a>
+    </div>
+    <script src="/Html-Css-Js/js/Exercice3.js"></script>
+</body>
+</html>

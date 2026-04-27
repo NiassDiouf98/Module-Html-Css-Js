@@ -1,0 +1,37 @@
+/* Applique un style de css fluide pour la page et le bouton ainsi que le titre */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+.mon-bouton {
+    display: inline-block;
+    padding: 20px;
+    border: 2px solid #4CAF50;
+    border-radius: 10px;
+    background-color: burlywood;
+}
+.card-out {
+    display: flex;
+    justify-content: space-between;
+    /* background-color: #0000FF; */
+    width: 40%;
+    height: 35%;
+    margin: 50px auto;
+}

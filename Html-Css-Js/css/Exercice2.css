@@ -1,0 +1,65 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+/* Applique une couleur de fond jaune a la page */
+body {
+    background-color: #FED559;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+}
+#card{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid salmon;
+    border-radius: 10px;
+}
+#card:hover{
+    background-color: salmon;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+.nom-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-in {
+    background-color: #FF0000;
+    width: 60%;
+    height: 35%;
+    margin: 50px auto;
+}
+.card-out {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    height: 35%;
+    margin: 50px auto;
+}
+
+.card-image {
+    padding: 5px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.col{
+    background-color: cadetblue;
+    border: none;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.col:hover{
+    background-color: aquamarine;
+}
