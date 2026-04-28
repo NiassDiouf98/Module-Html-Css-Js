@@ -312,3 +312,56 @@ function restoreUser(userId){
 /* ============================== *
 ** ==== Gestion du CRUD task ==== *
 ** ============================== */
+taskTableBody.addEventListener('click', (e) => {
+    const deleteBtn = e.target.closest('.delete-task-btn');
+    if (deleteBtn) {
+        const taskId = deleteBtn.getAttribute('data-task-id');
+        confirmModal.classList.remove('hidden');
+        confirmDeleteBtn.addEventListener('click', () => {
+            deleteTask(taskId);
+            confirmModal.classList.add('hidden');
+        });
+        return;
+    }
+
+    const editBtn = e.target.closest('.edit-task-btn');
+    if (editBtn) {
+        const taskId = editBtn.getAttribute('data-task-id');
+        editTask(taskId);
+    }
+});
+
+userArchiveTableBody.addEventListener('click', (e) => {
+    const archiveBtn = e.target.closest('.restore-user-btn');
+    if (archiveBtn) {
+        const userId = archiveBtn.getAttribute('data-user-id');
+        restoreUser(userId);
+    }
+});
+
+function deleteTask(taskId) {
+    const taskIndex = listTask.findIndex(task => task.id === taskId); // fonction pour trouver l'index
+    if (taskIndex !== -1) {
+        listTask.splice(taskIndex, 1); // Marquer la tache comme supprimé
+        
+        updateTaskStorage();
+        reRenderTask();
+    }
+}
+
+
+/* =================== *
+** ==== Mode Dark ==== *
+** =================== */
+function modeDark(){
+    document.body.classList.toggle("dark");
+
+    let modeDarkBtn = document.getElementById('mode-dark-btn');
+        
+    if (document.body.classList.contains('dark')) {
+        modeDarkBtn.textContent = "☀️";
+    } else {
+        modeDarkBtn.textContent = "🌙";
+    }
+
+}
