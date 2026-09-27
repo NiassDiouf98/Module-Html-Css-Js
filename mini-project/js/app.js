@@ -203,12 +203,34 @@ function reRenderUser(tableBody = userTableBody){
         `;
         tableBody.appendChild(tr);
     });
+    renderTaskUserFilter();
 }
 
 const taskTableBody = document.querySelector('#task-table tbody');
+const taskUserFilter = document.getElementById('task-user-filter');
+taskUserFilter.addEventListener('change', () => reRenderTask());
+
+function renderTaskUserFilter() {
+    const selectedUserId = taskUserFilter.value;
+    taskUserFilter.innerHTML = '<option value="">Tous les utilisateurs</option>';
+    listUser.filter(user => !user.archive).forEach(user => {
+        const option = document.createElement('option');
+        option.value = user.id;
+        option.textContent = user.nom;
+        taskUserFilter.appendChild(option);
+    });
+
+    if (listUser.some(user => user.id === selectedUserId && !user.archive)) {
+        taskUserFilter.value = selectedUserId;
+    }
+}
+
 function reRenderTask(tableBody = taskTableBody){
     tableBody.innerHTML = '';
-    const sortedTasks = [...listTask].sort((a, b) => b.dateCreation - a.dateCreation);
+    const selectedUserId = taskUserFilter.value;
+    const sortedTasks = [...listTask]
+        .filter(task => !selectedUserId || task.userId === selectedUserId)
+        .sort((a, b) => b.dateCreation - a.dateCreation);
     sortedTasks.forEach(task => {
         const tr = document.createElement('tr');
         tr.setAttribute('data-task-id', task.id);
@@ -217,6 +239,7 @@ function reRenderTask(tableBody = taskTableBody){
             <td class="task-status" style="color: ${task.termine ? 'green' : 'red'};">${task.termine ? 'Oui' : 'Non'}</td>
             <td>${task.userId ? listUser.find(user => user.id === task.userId)?.nom || 'Utilisateur supprimé' : 'Non assignée'}</td>
             <td>
+                <button title="${task.termine ? 'Réouvrir la tâche' : 'Marquer comme terminée'}" class="btn toggle-task-btn" data-task-id="${task.id}">${task.termine ? 'Réouvrir' : 'Terminer'}</button>
                 <button title="Supprimer" class="btn delete-task-btn" data-task-id="${task.id}">X</button>
                 <button title="Modifier" class="btn edit-task-btn" data-task-id="${task.id}">M</button>
                 <button title="Assigner" class="btn assign-task-btn" data-task-id="${task.id}">A</button>
@@ -318,6 +341,12 @@ function restoreUser(userId){
 
 // ==== Gestion du CRUD task ==== 
 taskTableBody.addEventListener('click', (e) => {
+    const toggleBtn = e.target.closest('.toggle-task-btn');
+    if (toggleBtn) {
+        toggleTask(toggleBtn.getAttribute('data-task-id'));
+        return;
+    }
+
     const deleteBtn = e.target.closest('.delete-task-btn');
     if (deleteBtn) {
         const taskId = deleteBtn.getAttribute('data-task-id');
@@ -356,6 +385,15 @@ function deleteTask(taskId) {
         updateTaskStorage();
         reRenderTask();
     }
+}
+
+function toggleTask(taskId) {
+    const task = listTask.find(task => task.id === taskId);
+    if (!task) return;
+
+    task.termine = !task.termine;
+    updateTaskStorage();
+    reRenderTask();
 }
 
 function editTask(taskId) {

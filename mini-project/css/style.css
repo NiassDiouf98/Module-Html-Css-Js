@@ -262,6 +262,21 @@ table th {
     min-width: 0;
     overflow-x: auto;
 }
+.task-filters {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+.task-filters select {
+    max-width: 260px;
+}
+.toggle-task-btn {
+    min-height: 40px;
+    padding: 8px 12px;
+    font-size: 13px;
+}
 .task-table {
     min-width: 620px;
 }
